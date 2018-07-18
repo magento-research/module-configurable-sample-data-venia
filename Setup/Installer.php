@@ -29,22 +29,29 @@ class Installer implements Setup\SampleData\InstallerInterface
      */
     protected $productLinkSetup;
 
+    /** @var Magento\CatalogSampleDataVenia\Model\Swatches */
+    protected $swatches;
+
     /**
      * @param \Magento\CatalogSampleDataVenia\Model\Attribute $attribute
      * @param \Magento\CatalogSampleDataVenia\Model\Category $category
      * @param \Magento\ConfigurableSampleDataVenia\Model\Product $configurableProduct
      * @param \Magento\ProductLinksSampleData\Model\ProductLink $productLinkSetup
+     * @param \Magento\ConfigurableSampleDataVenia\Model\Swatches $productLinkSetup
      */
     public function __construct(
         \Magento\CatalogSampleDataVenia\Model\Attribute $attribute,
         \Magento\CatalogSampleDataVenia\Model\Category $category,
-        \Magento\ConfigurableSampleDataVenia\Model\Product $configurableProduct//,
-        //\Magento\ProductLinksSampleData\Model\ProductLink $productLinkSetup
+        \Magento\ConfigurableSampleDataVenia\Model\Product $configurableProduct,
+        //\Magento\ProductLinksSampleData\Model\ProductLink $productLinkSetup,
+        \Magento\ConfigurableSampleDataVenia\Model\Swatches $swatches
+
     ) {
         $this->attribute = $attribute;
         $this->category = $category;
         $this->configurableProduct = $configurableProduct;
         //$this->productLinkSetup = $productLinkSetup;
+        $this->swatches = $swatches;
     }
 
     /**
@@ -53,6 +60,7 @@ class Installer implements Setup\SampleData\InstallerInterface
     public function install()
     {
         $this->attribute->install(['Magento_ConfigurableSampleDataVenia::fixtures/attributes.csv']);
+        $this->swatches->install();
         $this->category->install(['Magento_ConfigurableSampleDataVenia::fixtures/categories.csv']);
         $this->configurableProduct->install();
         /*$this->productLinkSetup->install(
