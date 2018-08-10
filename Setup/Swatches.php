@@ -1,6 +1,7 @@
 <?php
 
-namespace Magento\ConfigurableSampleDataVenia\Model;
+namespace Magento\ConfigurableSampleDataVenia\Setup;
+
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute as eavAttribute;
 /**
  * Class Swatches

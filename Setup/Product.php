@@ -3,7 +3,8 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\ConfigurableSampleDataVenia\Model;
+namespace Magento\ConfigurableSampleDataVenia\Setup;
+
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Filesystem\Directory\ReadFactory;
@@ -15,6 +16,10 @@ use Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorI
  */
 class Product
 {
+
+    /** @var \Magento\Eav\Model\Config  */
+    private $eavConfig;
+
     /**
      * @var \Magento\ImportExport\Model\Import
      */
@@ -53,7 +58,7 @@ class Product
         \Magento\ImportExport\Model\Import $importModel,
         \Magento\ImportExport\Model\Import\Source\CsvFactory $csvSourceFactory,
         \Magento\Indexer\Model\Indexer\CollectionFactory $indexerCollectionFactory,
-        \Magento\Framework\Filesystem\Directory\ReadFactory $readFactory,
+        ReadFactory $readFactory,
         \Magento\Framework\Component\ComponentRegistrar $componentRegistrar
     ) {
         $this->eavConfig = $eavConfig;
@@ -98,16 +103,5 @@ class Product
         chdir($currentPath);
 
         $this->eavConfig->clear();
-        $this->reindex();
-    }
-
-    /**
-     * Perform full reindex
-     */
-    private function reindex()
-    {
-        foreach ($this->indexerCollectionFactory->create()->getItems() as $indexer) {
-            $indexer->reindexAll();
-        }
     }
 }
