@@ -50,16 +50,16 @@ class InstallConfigurableSampleData implements
      * @param ModuleDataSetupInterface $moduleDataSetup
      * @param Attribute $attribute
      * @param Category $category
-     * @param Product $configurableProduct
+     * @param ProductImport $configurableProduct
      * @param Swatches $swatches
      */
     public function __construct(
         SetSession $setSession,
         ModuleDataSetupInterface $moduleDataSetup,
-                                Attribute $attribute,
-                                Category $category,
-                                Product $configurableProduct,
-                                Swatches $swatches)
+        Attribute $attribute,
+        Category $category,
+        Product $configurableProduct,
+        Swatches $swatches)
     {
         $this->moduleDataSetup = $moduleDataSetup;
         $this->attribute = $attribute;
@@ -74,7 +74,7 @@ class InstallConfigurableSampleData implements
         $this->attribute->install(['Magento_ConfigurableSampleDataVenia::fixtures/attributes.csv']);
         $this->swatches->install();
         $this->category->install(['Magento_ConfigurableSampleDataVenia::fixtures/categories.csv']);
-        $this->configurableProduct->install();
+        $this->configurableProduct->install('Magento_ConfigurableSampleDataVenia','fixtures/products.csv');
     }
 
     /**

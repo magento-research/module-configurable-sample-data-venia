@@ -72,7 +72,7 @@ class Product
     /**
      * @inheritdoc
      */
-    public function install()
+    public function install($moduleName, $fileName)
     {
         $this->eavConfig->clear();
         $importModel = $this->importModel;
@@ -88,9 +88,9 @@ class Product
 
         $source = $this->csvSourceFactory->create(
             [
-                'file' => 'fixtures/products.csv',
+                'file' => $fileName,
                 'directory' => $this->readFactory->create(
-                    $this->componentRegistrar->getPath(ComponentRegistrar::MODULE, 'Magento_ConfigurableSampleDataVenia')
+                    $this->componentRegistrar->getPath(ComponentRegistrar::MODULE, $moduleName)
                 )
             ]
         );
