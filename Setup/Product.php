@@ -35,10 +35,6 @@ class Product
      */
     private $readFactory;
 
-    /**
-     * @var \Magento\Indexer\Model\Indexer\CollectionFactory
-     */
-    private $indexerCollectionFactory;
 
     /**
      * @var \Magento\Framework\Component\ComponentRegistrar
@@ -49,7 +45,6 @@ class Product
      * @param \Magento\Eav\Model\Config $eavConfig
      * @param \Magento\ImportExport\Model\Import $importModel
      * @param \Magento\ImportExport\Model\Import\Source\CsvFactory $csvSourceFactory
-     * @param \Magento\Indexer\Model\Indexer\CollectionFactory $indexerCollectionFactory
      * @param \Magento\Framework\Filesystem\Directory\ReadFactory $readFactory
      * @param \Magento\Framework\Component\ComponentRegistrar $componentRegistrar
      */
@@ -57,14 +52,12 @@ class Product
         \Magento\Eav\Model\Config $eavConfig,
         \Magento\ImportExport\Model\Import $importModel,
         \Magento\ImportExport\Model\Import\Source\CsvFactory $csvSourceFactory,
-        \Magento\Indexer\Model\Indexer\CollectionFactory $indexerCollectionFactory,
         ReadFactory $readFactory,
         \Magento\Framework\Component\ComponentRegistrar $componentRegistrar
     ) {
         $this->eavConfig = $eavConfig;
         $this->importModel = $importModel;
         $this->csvSourceFactory = $csvSourceFactory;
-        $this->indexerCollectionFactory = $indexerCollectionFactory;
         $this->readFactory = $readFactory;
         $this->componentRegistrar = $componentRegistrar;
     }
